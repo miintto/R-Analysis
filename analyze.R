@@ -472,5 +472,4 @@ barplot_Time<-barplot(Time2, names.arg=names(Time2), las=2, main="시간별 대화량"
 barlabels(Time2+max(Time2)/11, barplot_Time, labels=Time2, cex=0.7, prop=1, border="white")
 barplot_Month<-barplot(Chat_Month3, names.arg=names(Chat_Month3), las=2, main="월별 대화량", horiz=F, col="#A3BEDA")
 barlabels(barplot_Month, Chat_Month3+max(Chat_Month3)/18, labels=Chat_Month3, cex=0.7, prop=1, border="white")
-
 }
