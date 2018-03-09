@@ -101,11 +101,7 @@
 	Dat_2<-Dat_2[,c(T, apply(Dat_2[-1], 2, sum)>0)]
 	Dat_2$name<-as.character(Dat_2$name)
 	Dat_2$name[Dat_2$name=='회원님']<-'박민재'
-	
-	
-### 충진이 데이터 병합
-#	Dat_2[Dat_2$name=='타다요시',][-1]<-Dat_2[Dat_2$name=='(알수없음)',][-1]+Dat_2[Dat_2$name=='타다요시',][-1]
-#	Dat_2<-Dat_2[Dat_2$name!='(알수없음)',]
+
 
 
 ### 시간대별 조사
