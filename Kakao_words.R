@@ -69,21 +69,19 @@
     Dat$Chat[i]<-paste(Chat[[i]][-(1:7)], collapse = ' ')
   }
   Dat<-Dat[!is.na(Dat$Names),]
-  
+
   Names<-names(table(Dat$Names))
   Names[grep('님이', Names)]<-NA
   Names<-Names[!is.na(Names)]
-  
+
 
 
 ### 개인별로 말풍선만 추출
   User<-list()
-  for(j in 1:length(Names)){
-    User_1<-list()
-    for(i in 1:length(Chat)) if(Chat[[i]][6]==Names[j]) User_1[[i]]<-Chat[[i]][-(1:7)]
-    User_1<-unlist(User_1)
-    User[[j]]<-User_1
+  for(i in 1:length(Names)){
+    User[[i]]<-unlist(strsplit(Dat$Chat[Dat$Names==Names[i]], ' '))
   }
+
 
 
 ### 필요없는 단어 제거
@@ -100,10 +98,13 @@
     User[[i]]<-gsub("\\?", "", User[[i]])
     User[[i]]<-gsub("\\!", "", User[[i]])
     User[[i]]<-gsub("\\+", "", User[[i]])
+    User[[i]]<-gsub("\\(답장)", "", User[[i]])
     User[[i]]<-gsub("\\=", "", User[[i]])
+    User[[i]]<-gsub("\\\\n", "", User[[i]])
     User[[i]][grep("\\(", User[[i]])]<-''
     User[[i]][grep("\\/", User[[i]])]<-''
   }
+
 
 
 ### 출력하고 싶은 단어 개수
